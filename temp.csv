@@ -1,0 +1,15 @@
+Fan1             | 30h | ok  |  7.1 | 3240 RPM
+Fan2             | 31h | ok  |  7.1 | 3240 RPM
+Fan3             | 32h | ok  |  7.1 | 3240 RPM
+Fan4             | 33h | ok  |  7.1 | 3360 RPM
+Fan5             | 34h | ok  |  7.1 | 3720 RPM
+Fan6             | 35h | ok  |  7.1 | 3720 RPM
+Inlet Temp       | 04h | ok  |  7.1 | 22 degrees C
+Exhaust Temp     | 01h | ok  |  7.1 | 27 degrees C
+Temp             | 0Eh | ok  |  3.1 | 37 degrees C
+Temp             | 0Fh | ok  |  3.2 | 38 degrees C
+Current 1        | 6Ah | ok  | 10.1 | 0,40 Amps
+Current 2        | 6Bh | ns  | 10.2 | No Reading
+Voltage 1        | 6Ch | ok  | 10.1 | 242 Volts
+Voltage 2        | 6Dh | ns  | 10.2 | No Reading
+Pwr Consumption  | 77h | ok  |  7.1 | 112 Watts

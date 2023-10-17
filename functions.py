@@ -16,7 +16,7 @@ class IPMIConnector:
     
     def retrieve_data(self) -> pd.DataFrame:
         try : 
-            command = f"ipmitool -I lanplus -H {self.host} -p {self.port} -U {self.user} -P {self.pwd} sdr elist full > temp.csv"
+            command = f"ipmitool -I lanplus -H {self.host} -p {self.port} -U {self.user} -P {self.pwd} sd temr elist full > temp.csv"
             result = subprocess.run(command, shell=True, stdout=subprocess.PIPE, text=True)
             command = f"sed -i 'name | ID | status | group | metric' temp.csv"
             self.df = pd.read_csv("temp.csv", delimiter="|")
@@ -33,16 +33,19 @@ class IPMIConnector:
         df['metric'] = df['metric'].str.replace(r'[^\d,.]', '', regex=True)
         df['metric'] = df['metric'].replace('', np.nan)
         df = df.dropna(subset=['metric'])
+        df.head(20)
 
 
 
 def sanitize_data():
-
-
-
-
+    df = pd.read_csv("temp.csv", delimiter="|")
+    df.columns = df.columns.str.strip()
+    df = df.replace({' ':''}, regex=True)
+    df['unit'] = df['metric'].str.extract(r'([^0-9.,]+)$')
+    df['metric'] = df['metric'].str.replace(r'[^\d,.]', '', regex=True)
+    df['metric'] = df['metric'].replace('', np.nan)
+    df = df.dropna(subset=['metric'])
     print(df.head(20))
-    print(df.columns)
 
 
 def process_data():

@@ -1,3 +1,4 @@
+name | ID | status | group | metric
 Fan1             | 30h | ok  |  7.1 | 3240 RPM
 Fan2             | 31h | ok  |  7.1 | 3240 RPM
 Fan3             | 32h | ok  |  7.1 | 3240 RPM

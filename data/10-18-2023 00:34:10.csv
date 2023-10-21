@@ -1,0 +1,14 @@
+name,ID,status,group,metric,unit,date
+Fan1,30h,ok,7.1,3240,RPM,10-18-2023 00:34:10
+Fan2,31h,ok,7.1,3240,RPM,10-18-2023 00:34:10
+Fan3,32h,ok,7.1,3240,RPM,10-18-2023 00:34:10
+Fan4,33h,ok,7.1,3240,RPM,10-18-2023 00:34:10
+Fan5,34h,ok,7.1,3720,RPM,10-18-2023 00:34:10
+Fan6,35h,ok,7.1,3720,RPM,10-18-2023 00:34:10
+InletTemp,04h,ok,7.1,21,degreesC,10-18-2023 00:34:10
+ExhaustTemp,01h,ok,7.1,26,degreesC,10-18-2023 00:34:10
+Temp,0Eh,ok,3.1,35,degreesC,10-18-2023 00:34:10
+Temp,0Fh,ok,3.2,36,degreesC,10-18-2023 00:34:10
+Current1,6Ah,ok,10.1,"0,40",Amps,10-18-2023 00:34:10
+Voltage1,6Ch,ok,10.1,244,Volts,10-18-2023 00:34:10
+PwrConsumption,77h,ok,7.1,112,Watts,10-18-2023 00:34:10

@@ -1,5 +1,4 @@
 import os
-import sys
 
 def load_variables(var : str):
     if var in os.environ:

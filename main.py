@@ -1,22 +1,17 @@
 __author__ = "Andréa Joly"
 __date__ = "15-10-2023"
 
-import time
+from apscheduler.schedulers.blocking  import BlockingScheduler
+from datetime import datetime
 
-from apscheduler.schedulers.blocking import BlockingScheduler
-
-from utils.retrieve import retrieve
+from config.config import SCAN_INTERVAL
+from lib.retrieve import retrieve
 
 if __name__ == "__main__":
     scheduler = BlockingScheduler(timezone='Europe/Paris')
-    scheduler.add_job(retrieve, "interval", seconds=600)
-    scheduler.start()
-
-
-
-"""
-from retrieve import retrieve_data
-
-while (True) : 
-    retrieve_data('192.168.1.66', 'root', 'calvin')
-    time.sleep(600)"""
+    job = scheduler.add_job(retrieve, "interval", seconds=SCAN_INTERVAL)
+    try:
+        job.modify(next_run_time=datetime.now())
+        scheduler.start()
+    except KeyboardInterrupt:
+        scheduler.shutdown()

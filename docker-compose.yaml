@@ -1,31 +1,10 @@
-version: '1'
+version: '2'
 
 services:
-  IPMI-Explorer-db:
-    container_name: IPMI-Explorer-db
-    image: docker.io/library/mariadb:10.4
-    restart: always
-    environment:
-      MYSQL_USER: root
-      MYSQL_ROOT_PASSWORD: password
-    healthcheck:
-      test: '/usr/local/bin/.healthchecksh --su-mysql --connect --innodb_initialized'
-    networks:
-      - IPMI-Explorer-ntwk
-    ports:
-      -"3306:3306"
-
-  IPMI-Explorer:
-    container_name: IPMI-Explorer
+  ipmi-explorer:
+    container_name: ipmi-explorer
     build:
       context: .
-    depends_on:
-      - IPMI-Explorer-db
     restart: always
     healthcheck:
       test: 'python healthcheck.py'
-    networks:
-      - IPMI-Explorer-ntwk
-
-networks:
-  IPMI-Explorer-ntwk:

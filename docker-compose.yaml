@@ -2,6 +2,7 @@ version: '2'
 
 services:
   ipmi-explorer:
+    image: python:3.9
     container_name: ipmi-explorer
     build:
       context: .

@@ -26,6 +26,15 @@ Build and run the application using Docker Compose:
 docker-compose up -d
 ```
 
+or
+
+Build and run the application using Docker run:
+
+```bash
+docker build -t ipmi-explorer .
+docker run -d --name ipmi-explorer ipmi-explorer
+```
+
 The IPMI Data Collector is now running and ready to collect and store server data.
 
 ## License

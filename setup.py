@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name='IPMI-Explorer',
+    name='ipmi-explorer',
     version='1.0',
     install_requires=[
         'APScheduler==3.10.1',

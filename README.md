@@ -29,7 +29,7 @@ docker-compose up -d
 The IPMI Data Collector is now running and ready to collect and store server data.
 
 ## License
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](https://github.com/Andreaj42/IPMI-Explorer/blob/main/LICENSE).
 
 ## Issue
 Simply open an issue in this repository.

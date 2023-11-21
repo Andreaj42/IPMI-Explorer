@@ -4,7 +4,7 @@ from typing import Optional
 
 import mysql.connector
 
-from config.config import DB_HOST, DB_PASSWORD, DB_PORT, DB_USER
+from config.config import DB_HOST, DB_PASSWORD, DB_PORT, DB_USER, SERVER_NAME
 
 
 class DatabaseConnector:
@@ -17,7 +17,7 @@ class DatabaseConnector:
             'port': DB_PORT,
         }
         self.database = "ipmi_explorer"
-        self.table = "metrics"
+        self.table = SERVER_NAME
         self.logger = self.__configure_logger()
 
     def __configure_logger(self):
@@ -116,7 +116,23 @@ class DatabaseConnector:
             self.logger.critical(
                 f"Erreur lors de la création de la table {self.table} dans la base {self.database}.", exc_info=format_exc())
             exit(-1)
-
+            
+    def __create_index(self):
+        sql = f"""CREATE INDEX `index` ON `{self.table}` (`timestamp`)"""
+        try:
+            custom_config = self.config
+            custom_config["database"] = self.database
+            cnx = mysql.connector.connect(**custom_config)
+            cur = cnx.cursor(buffered=True)
+            cur.execute(sql)
+            cur.close()
+            cnx.close()
+            self.logger.info(f"Table {self.table} indexée.")
+        except:
+            self.logger.critical(
+                f"Erreur lors de l'indexation de la table {self.table} dans la base {self.database}.", exc_info=format_exc())
+            exit(-1)
+            
     def __send_query(self, query: str, val: tuple):
         try:
             custom_config = self.config
@@ -142,4 +158,5 @@ class DatabaseConnector:
         self.__drop_database()
         self.__create_database()
         self.__create_table()
+        self.__create_index()
         self.logger.info("Base de données configurée.")

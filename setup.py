@@ -6,7 +6,7 @@ setup(
     packages=find_packages(include=['lib', 'config']),
     install_requires=[
         'APScheduler==3.10.1',
-        'mysql-connector-python==8.0.33',
+        'mysql-connector-python==9.1.0',
         'setuptools==71.1.0',
         'python-dotenv',
         'pandas==2.1.3'
